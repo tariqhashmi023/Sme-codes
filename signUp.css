@@ -1,0 +1,27 @@
+body {
+   text-align: center;
+    background-image:url(../form.jpg);
+}
+h2{
+   padding-top: 25px;
+    
+}
+form {
+     background-color: rgb(224, 219, 219);
+            color: rgb(32, 28, 28);
+            margin-left: 500px;
+            margin-right: 500px;
+            padding-bottom: 80px;
+}
+.btn2{
+            width: 250px;
+            height: 26px;
+            background: rgb(58, 58, 153);
+            color: aliceblue;
+            border: none;
+            border-radius: 10px;
+            margin-top: 25px;
+}
+label{
+   padding-left: 25px;
+}

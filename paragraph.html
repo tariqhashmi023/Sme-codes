@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function addp(){
+            let p= document.createElement("p");
+            p.innerText = "This is a new paragraph"
+
+            document.getElementById("container").appendChild(p);
+        }
+         function remp(){
+               document.getElementById("para").remove();
+        }
+    </script>
+</head>
+<body>
+    <p id="para">Default Paragraph</p>
+    <div id="container"></div>
+    <button onclick="addp()">Add Paragraph</button>
+
+    <button onclick="remp()">Remove Paragraph</button>
+
+    
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <h2>Student Portal</h2>
+
+    <p onclick="showPage('dashboard')"> Dashboard</p>
+
+    <p onclick="showPage('add')">Add Student</p>
+
+    <p onclick="showPage('students')">Students</p>
+
+    <p onclick="showPage('search')">Search Student</p>
+
+    <p onclick="showPage('delete')">Delete Student</p>
+
+</div>
+
+
+<!-- Main -->
+
+<div class="main">
+
+
+    <!-- DASHBOARD -->
+
+    <div id="dashboard">
+
+        <h1>Student Dashboard</h1>
+
+        <div class="cards">
+
+            <div class="card blue">
+                <h3>Total Students</h3>
+                <h2 id="total">5</h2>
+            </div>
+
+            <div class="card green">
+                <h3>Active Students</h3>
+                <h2 id="active">5</h2>
+            </div>
+
+            <div class="card orange">
+                <h3>Male Students</h3>
+                <h2 id="male">3</h2>
+            </div>
+
+            <div class="card purple">
+                <h3>Female Students</h3>
+                <h2 id="female">2</h2>
+            </div>
+
+        </div>
+
+        <h2>Recent Students</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Email</th>
+            </tr>
+
+            <tbody id="dashboardTable"></tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- ADD STUDENT -->
+
+    <div id="add" class="hide">
+
+        <h1>Add Student</h1>
+
+        <input type="text" id="name" placeholder="Enter Name">
+
+        <input type="text" id="course" placeholder="Enter Course">
+
+        <input type="text" id="email" placeholder="Enter Email">
+
+        <select id="gender">
+
+            <option value="">Select Gender</option>
+
+            <option>Male</option>
+
+            <option>Female</option>
+
+        </select>
+
+        <br><br>
+
+        <button onclick="addStudent()">Add Student</button>
+
+    </div>
+
+
+
+    <!-- STUDENTS -->
+
+    <div id="students" class="hide">
+
+        <h1>All Students</h1>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Gender</th>
+            </tr>
+
+            <tbody id="studentTable"></tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div id="search" class="hide">
+
+        <h1>Search Student</h1>
+
+        <input type="text"
+               id="searchName"
+               placeholder="Enter student name">
+
+        <button onclick="searchStudent()">
+            Search
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+
+    <!-- DELETE -->
+
+    <div id="delete" class="hide">
+
+        <h1>Delete Student</h1>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Action</th>
+            </tr>
+
+            <tbody id="deleteTable"></tbody>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+<script src="student.js"></script>
+
+</body>
+</html>

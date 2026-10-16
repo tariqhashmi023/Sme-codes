@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para">Welcome!!!!!</p>
+    <h1 onmouseover="fun1()">Onmouse OVER event heading example gold</h1>
+    <h1 onmouseout="fun2()">Onmouse Out event heading example blue</h1>
+    <input type="text" id="name" oninput=modify()>
+    <br><br>
+    <input type="text" id="names" oninput=modify1()>
+
+    <button onclick="Size()">Increase size</button>
+    <script>
+        function fun1(){
+            document.getElementById("para").style.color="gold";
+        }
+        function fun2(){
+            document.getElementById("para").style.color="blue";
+        }
+        function modify(){
+             const namef =document.getElementById("name");
+             namef.value=namef.value.toUpperCase();
+        }
+        function modify1(){
+             const namef =document.getElementById("names");
+             namef.value=namef.value.toLowerCase();
+        }
+        function Size(){
+            document.getElementById('names').style.fontSize ="30px";
+        }
+
+    </script>
+</body>
+</html>

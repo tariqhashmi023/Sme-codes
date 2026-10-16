@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 0; background: #eef3f8; }
+        header { background: #075b55; color: white; padding: 15px; }
+        nav { background: #064943; padding: 15px; }
+        nav a { color: white; margin-right: 20px; text-decoration: none; }
+        main { padding: 20px; }
+        .cards { display: flex; gap: 15px; flex-wrap: wrap; }
+        .card { background: white; padding: 20px; flex: 1; min-width: 120px; text-align: center; border-radius: 8px; }
+        table { width: 100%; background: white; margin-top: 20px; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    </style>
+</head>
+<body>
+
+<header><h2>Student Portal</h2></header>
+
+<nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="add-student.html">Add Student</a>
+    <a href="students.html">Students</a>
+</nav>
+
+<main>
+    <h2>Student Dashboard</h2>
+
+    <div class="cards">
+        <div class="card">Total Students<h2 id="total">0</h2></div>
+        <div class="card">Active Students<h2 id="active">0</h2></div>
+        <div class="card">Male Students<h2 id="male">0</h2></div>
+        <div class="card">Female Students<h2 id="female">0</h2></div>
+    </div>
+
+    <h3>Recent Students</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Course</th><th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="list"></tbody>
+    </table>
+
+    <p id="message"></p>
+</main>
+
+<script>
+let api = "http://localhost:3000/students";
+
+fetch(api)
+.then(res => {
+    if (!res.ok) throw new Error("API error");
+    return res.json();
+})
+.then(data => {
+    document.getElementById("total").innerText = data.length;
+    document.getElementById("active").innerText =
+        data.filter(s => s.status === "Active").length;
+    document.getElementById("male").innerText =
+        data.filter(s => s.gender === "Male").length;
+    document.getElementById("female").innerText =
+        data.filter(s => s.gender === "Female").length;
+
+    let rows = "";
+
+    data.slice(-5).reverse().forEach(s => {
+        rows += `<tr>
+            <td>${s.id}</td>
+            <td>${s.name}</td>
+            <td>${s.course}</td>
+            <td>${s.email}</td>
+        </tr>`;
+    });
+
+    document.getElementById("list").innerHTML = rows;
+})
+.catch(() => {
+    document.getElementById("message").innerText =
+        "API start karo aur page refresh karo.";
+});
+</script>
+
+</body>
+</html>

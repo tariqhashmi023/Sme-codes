@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script</title>
+    <script>
+        function displayMessage(){
+            document.getElementById('para').innerHTML="Hi welcome to university app dashboard";
+        }
+
+        function Size(){
+            document.getElementById('para').style.fontSize ="30px";
+        }
+
+        function Color(){
+            document.getElementById('para').style.color="red";
+        }
+
+        function Color1(){
+            document.getElementById('para').style.color="gold";
+        }
+        function display(){
+            document.getElementById('use').innerHTML="Hi my name is Tariq";
+        }
+            function col(){
+                 document.getElementById('use').style.color="yellow";
+            }
+             function dec(){
+            document.getElementById('use').style.fontSize ="10px";
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <p id="para">Welcome to Lamrin University</p>
+    <button onclick="displayMessage()">Display Message</button>
+   
+
+     <button onclick="Size()">Increase size</button>
+
+      <button onclick="Color()">red colour</button>
+       <button onclick="Color1()">gold colour</button>
+
+       <h2>hello</h2>
+
+    <p id="use">Welcome</p>
+    <button onclick="display()">Display</button>
+    <button onclick="dec()">decrease size</button>
+    <button onclick="col()">Yellow colour</button>
+
+</body>
+</html>

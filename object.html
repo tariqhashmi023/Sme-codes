@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Object</h1>
+     
+    <script>
+        const person = {
+          firstName: "Tariq",
+          lastName: "Hashmi",
+          age: 21,
+        fullName: function(){
+            return this.firstName+" "+this.lastName;
+        }
+        };
+        console.log(person.firstName);
+        console.log(person.lastName);
+        console.log(person.age);
+        console.log(person.fullName());
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+        body { margin: 0; font-family: Arial; background: #eef3f8; }
+        header { background: #075b55; color: white; padding: 15px; }
+        nav { background: #064943; padding: 15px; }
+        nav a { color: white; margin-right: 20px; text-decoration: none; }
+        .form-box { background: white; max-width: 650px; margin: 25px auto; padding: 20px; border-radius: 8px; }
+        input, select { box-sizing: border-box; width: 100%; padding: 10px; margin: 8px 0 15px; }
+        button { background: #07876d; color: white; border: 0; padding: 12px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<header><h2>Student Portal</h2></header>
+
+<nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="add-student.html">Add Student</a>
+    <a href="students.html">Students</a>
+</nav>
+
+<div class="form-box">
+    <h2>Add New Student</h2>
+
+    <form id="studentForm">
+        <label>Name</label>
+        <input id="name" placeholder="Enter student name" required>
+
+        <label>Email</label>
+        <input id="email" type="email" placeholder="Enter email" required>
+
+        <label>Phone Number</label>
+        <input id="phone" type="tel" placeholder="Enter phone number" required>
+
+        <label>Gender</label>
+        <select id="gender" required>
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <label>Course</label>
+        <select id="course" required>
+            <option value="">Select course</option>
+            <option>BCA</option>
+            <option>B.Tech</option>
+            <option>B.Sc CS</option>
+            <option>BBA</option>
+        </select>
+
+        <label>Date of Birth</label>
+        <input id="dob" type="date" required>
+
+        <button type="submit">Save Student</button>
+        <button type="reset" style="background:#64748b">Reset</button>
+    </form>
+
+    <p id="message"></p>
+</div>
+
+<script>
+let api = "http://localhost:3000/students";
+
+document.getElementById("studentForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    let student = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        gender: document.getElementById("gender").value,
+        course: document.getElementById("course").value,
+        dob: document.getElementById("dob").value,
+        status: "Active"
+    };
+
+    let message = document.getElementById("message");
+    message.innerText = "Saving...";
+
+    try {
+        let response = await fetch(api, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(student)
+        });
+
+        if (!response.ok) throw new Error("Save failed");
+
+        let result = await response.json();
+
+        message.innerText = "Student saved! ID: " + result.id;
+        document.getElementById("studentForm").reset();
+    } catch (error) {
+        message.innerText = "Save nahi hua. JSON Server check karo.";
+    }
+});
+</script>
+
+</body>
+</html>

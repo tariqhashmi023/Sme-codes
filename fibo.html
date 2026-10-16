@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fibonacci</h1>
+    <p id="demo"></p>
+
+    <script>
+        let n = 10;
+        let a = 0, b = 1;
+            
+        for(let i = 0; i<=n; i++){
+        
+            document.getElementById("demo").innerHTML += a +"";
+            let c = a + b;
+                a = b;
+                b = c;
+        }
+    </script>
+</body>
+</html>

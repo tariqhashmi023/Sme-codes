@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Students</title>
+    <style>
+        body { margin: 0; font-family: Arial; background: #eef3f8; }
+        header { background: #075b55; color: white; padding: 15px; }
+        nav { background: #064943; padding: 15px; }
+        nav a { color: white; margin-right: 20px; text-decoration: none; }
+        main { padding: 20px; overflow-x: auto; }
+        table { width: 100%; background: white; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background: #d5eeee; }
+    </style>
+</head>
+<body>
+
+<header><h2>Student Portal</h2></header>
+
+<nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="add-student.html">Add Student</a>
+    <a href="students.html">Students</a>
+</nav>
+
+<main>
+    <h2>All Students</h2>
+    <p id="message">Loading students...</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Email</th>
+                <th>Phone</th><th>Gender</th>
+                <th>Course</th><th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody id="students"></tbody>
+    </table>
+</main>
+
+<script>
+let api = "http://localhost:3000/students";
+
+async function loadStudents() {
+    let message = document.getElementById("message");
+
+    try {
+        let response = await fetch(api);
+        if (!response.ok) throw new Error("API error");
+
+        let data = await response.json();
+        let rows = "";
+
+        data.forEach(s => {
+            rows += `<tr>
+                <td>${s.id}</td>
+                <td>${s.name}</td>
+                <td>${s.email}</td>
+                <td>${s.phone}</td>
+                <td>${s.gender}</td>
+                <td>${s.course}</td>
+                <td>${s.dob}</td>
+            </tr>`;
+        });
+
+        document.getElementById("students").innerHTML = rows;
+        message.innerText = "Total Students: " + data.length;
+    } catch (error) {
+        message.innerText = "API start karo aur page refresh karo.";
+    }
+}
+
+loadStudents();
+</script>
+
+</body>
+</html>

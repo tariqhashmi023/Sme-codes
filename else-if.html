@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <p>Welcome!</p>
+
+    <p id="demo">Good Morning</p>
+
+    <script>
+        let x = 5;
+
+        if(x < 18 && x > 13){
+            document.getElementById("demo").innerHTML="x is teenager";
+        }
+        else if (x > 18){
+            document.getElementById("demo").innerHTML="x is adult";
+        }
+        else {
+            document.getElementById("demo").innerHTML="x is child";
+        }
+    </script>
+</body>
+</html>
